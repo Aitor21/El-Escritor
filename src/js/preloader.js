@@ -18,6 +18,7 @@
       this.load.bitmapFont('minecraftia', 'assets/minecraftia.png', 'assets/minecraftia.xml');
       this.load.image('caracol', 'assets/enemigo.png', 72, 48);
       //this.load.spritesheet('player', 'assets/player.png', 37, 45, 18);  // esta es para cuado metamos el personaje 
+    this.load.spritesheet('mummy', 'assets/metalslug_mummy37x45.png', 37, 45, 18);
         
         
       //this.load.tilemap('map', 'assets/features_test.json', null, Phaser.Tilemap.TILED_JSON);

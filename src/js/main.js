@@ -4,7 +4,7 @@ window.onload = function () {
   var game
     , ns = window['el-escritor'];
 
-  game = new Phaser.Game(1980, 1080, Phaser.AUTO, 'el-escritor-game');
+  game = new Phaser.Game(1280, 860, Phaser.AUTO, 'el-escritor-game');
   game.state.add('boot', ns.Boot);
   game.state.add('preloader', ns.Preloader);
   game.state.add('menu', ns.Menu);
