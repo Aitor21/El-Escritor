@@ -10,6 +10,8 @@
         this.text = null;
         this.mummy = null;
         this.loopText;
+        this.upKey = null;
+        this.downKey = null;
     }
 
     Game.prototype = {
@@ -29,7 +31,9 @@
       this.player.body.gravity.y=450;
         this.add.tween(this.player.scale).to( { x: 3, y: 3 }, 2000, true, 0, 1000, true);
 
-    
+    var sprite = this.add.sprite(300, 200, 'personajeEspaldas');
+          //this.sprite.animations.add('walk');
+          //this.sprite.animations.play('walk', 50, true);
           
           
     
@@ -49,6 +53,9 @@
       this.camera.follow(this.player);
       this.cursors = this.input.keyboard.createCursorKeys();
       this.jumpButton = this.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
+        this.upKey = this.input.keyboard.addKey(Phaser.Keyboard.UP);
+        this.downKey = this.input.keyboard.addKey(Phaser.Keyboard.DOWN);
+
               
     },
 
@@ -66,6 +73,20 @@
       this.player.scale.x += 0.01;
         this.player.scale.y += 0.01;
     }
+        if (this.upKey.isDown)
+        {
+            //this.key1 = this.input.keyboard.addKey(Phaser.Keyboard.ONE);
+
+            this.player.y -= 6,2;
+            this.player.scale.x -= 0.001;
+            this.player.scale.y -= 0.001;
+        }
+        else if (this.downKey.isDown)
+        {
+            this.player.y += 6,2;
+            this.player.scale.x += 0.01;
+            this.player.scale.y += 0.01;
+        }
         
     if (this.jumpButton.isDown && this.game.time.now > this.jumpTimer)
     {
