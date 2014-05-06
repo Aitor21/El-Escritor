@@ -25,8 +25,9 @@
       //player  
             this.player = this.add.sprite(20, 1500, 'personajeEspaldas');
             this.player.animations.add('walkStraight');
-            //this.player.animations.add('walkStraight', [1, 2, 3, 4, 5], 10, false);          // si aqui pongo true en vez de false, lo que pasa es que el player no para de moverse aunque no estemos apretando ninguna tecla
-          //this.player.animations.play('walkStraight', 5, true);
+            this.player.animations.add('walkStraight', [1, 2, 3, 4, 5], 10, true);          // si aqui pongo true en vez de false, lo que pasa es que el player no para de moverse aunque no estemos apretando ninguna tecla
+            //this.player.animations.play('walkStraight', 3, true);
+
             this.physics.arcade.enable(this.player);
             this.player.body.linearDamping = 1;
             this.player.body.collideWorldBounds = true;
@@ -91,14 +92,17 @@
             this.player.scale.x -= 0.001;
             this.player.scale.y -= 0.001;
             this.player.animations.play('walkStraight'/*, 5, true*/);
+
         }
         else if ((this.downKey.isDown) === true)
         {
             this.player.y += 6,2;
             this.player.scale.x += 0.001;
             this.player.scale.y += 0.001;
+            this.player.animations.stop();
 
         }
+    
         
     /*if (this.jumpButton.isDown && this.game.time.now > this.jumpTimer)
     {
@@ -107,9 +111,9 @@
             this.player.body.velocity.y = -300;
         }
     } */
-    this.physics.arcade.overlap(this.caracol, this.player, function (player, caracol)
+    this.physics.arcade.collide(this.caracol, this.player, function (player, caracol)
     {
-        while(animationStarted)
+        /*while(animationStarted)
         {
             if (this.input.keyboard.isDown(Phaser.Keyboard.LEFT))
             {
@@ -117,11 +121,11 @@
                 this.player.scale.x -= 0;
                 this.player.scale.y -= 0;
             }
-        }
+        }*/
     this.add.bitmapText(200,20, 'minecraftia','RETARD',64);
     }, null, this);
         
-        //this.add.bitmapText(20,20, 'minecraftia','RETARD',64);
+        this.add.bitmapText(20,20, 'minecraftia','RETARD',64);
 
 
 /*
@@ -152,18 +156,19 @@ animationStopped: function(sprite, animation) {
 }
 */
     
-    /*if(this.player.position.x=300){
+    if((this.player.position.x=700) === true){
         this.player.body.velocity.x =0;
-    }*/
+    }
      /*this.physics.arcade.overlap(this.player, this.caracol, function (player, caracol) {
             this.caracol.play();
-            player.x=2972.7;
-            player.y=1166.5;
+            this.player.x=2972.7;
+            this.player.y=1166.5;
             this.lastx=2972.7;
             this.lasty=1166.5;
             this.player.body.velocity.y= -300;
             this.green=true;
-        } null, this);*/
+        } null, this);
+        */
     },
 
 
