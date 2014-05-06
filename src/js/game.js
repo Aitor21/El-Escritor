@@ -16,38 +16,42 @@
 
     Game.prototype = {
 
-      create: function () {
-        var x = this.game.width / 2, y = this.game.height / 2;
-        this.physics.startSystem(Phaser.Physics.ARCADE);
-        this.stage.backgroundColor = '##38ffff';
+        create: function () {
+            var x = this.game.width / 2, y = this.game.height / 2;
+            this.physics.startSystem(Phaser.Physics.ARCADE);
+            this.stage.backgroundColor = '##38ffff';
           //this.load.image('fondo', 0,0, 'fondo';
           
       //player  
-      this.player = this.add.sprite(20, 1500, 'personajeEspaldas');
-          this.player.animations.add('walkStraight');
+            this.player = this.add.sprite(20, 1500, 'personajeEspaldas');
+            this.player.animations.add('walkStraight');
          // this.player.animations.play('walkStraight', 5, true);
-      this.physics.arcade.enable(this.player);
-      this.player.body.linearDamping = 1;
-      this.player.body.collideWorldBounds = true;
-      this.player.anchor.setTo(0.5, 0.5);
+            this.physics.arcade.enable(this.player);
+            this.player.body.linearDamping = 1;
+            this.player.body.collideWorldBounds = true;
+            this.player.anchor.setTo(0.5, 0.5);
       //this.player.body.gravity.y=450;
-        this.add.tween(this.player.scale).to( { x: 3, y: 3 }, 2000, true, 0, 1000, true);
+            this.add.tween(this.player.scale).to({ x: 3, y: 3 }, 2000, true, 0, 1000, true);
+            this.player.scale.set(0.4);
 
-    /*var sprite = this.add.sprite(300, 200, 'personajeEspaldas');
+    //var sprite = this.add.sprite(300, 200, 'personajeEspaldas');
           //this.sprite.animations.add('walk');
           //this.sprite.animations.play('walk', 50, true);
           
           
     
-      /*
-      this.caracol= this.add.group();
-      this.caracol.enableBody = true;
-      this.caracol.physicsBodyType = Phaser.Physics.ARCADE;
-      this.caracol.setAll('body.collideWorldBounds', true);
-      this.caracol.create(400 , 730 , 'mummy',5);
-      this.caracol = this.add.sprite(400, 730, 'mummy', 5);
-      this.caracol.scale.set(4);
-      */
+      
+            this.caracol= this.add.group();
+            this.caracol.enableBody = true;
+            this.caracol.physicsBodyType = Phaser.Physics.ARCADE;
+            this.caracol.setAll('body.collideWorldBounds', true);
+            //this.caracol.create(500 , 730 , 'mummy',5);
+            this.caracol = this.add.sprite(400, 730, 'mummy', 5);
+            //this.caracol.scale.set(4);
+            this.caracol.animations.add('zombiewalk');
+            this.caracol.animations.play('zombiewalk',5,true);
+            
+      
       
       //this.anim = this.caracol.animations.add('walk');
       //this.anim.onStart.add(animationStarted,this);
@@ -56,30 +60,28 @@
 
         
       //this.camera.follow(this.player);
-      this.cursors = this.input.keyboard.createCursorKeys();
-      this.jumpButton = this.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);                       //paracen ser indispensables para que el juego funcione 
-        this.upKey = this.input.keyboard.addKey(Phaser.Keyboard.UP);                                //parecen ser indispensables para que compile
-        this.downKey = this.input.keyboard.addKey(Phaser.Keyboard.DOWN);                            //paracen ser indispensables para que el juego compile
+            this.cursors = this.input.keyboard.createCursorKeys();
+            this.jumpButton = this.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);                       //paracen ser indispensables para que el juego funcione 
+            this.upKey = this.input.keyboard.addKey(Phaser.Keyboard.UP);                                //parecen ser indispensables para que compile
+            this.downKey = this.input.keyboard.addKey(Phaser.Keyboard.DOWN);                            //paracen ser indispensables para que el juego compile
 
               
-    },
+        },
 
-    update: function () {
+        update: function () {
         
-    if (this.input.keyboard.isDown(Phaser.Keyboard.LEFT))
-    {
-      this.player.x -=6,2;
-        //this.player.scale.x -= 0.01;
-        //this.player.scale.y -= 0.01;
-    }
-    else if (this.input.keyboard.isDown(Phaser.Keyboard.RIGHT))
-    {
-      this.player.x +=6,2;
-      //this.player.scale.x += 0.01;
-       // this.player.scale.y += 0.01;
-    }
-        if (this.upKey.isDown)
-        {
+            if (this.input.keyboard.isDown(Phaser.Keyboard.LEFT)) {
+                this.player.x -= 6.2;
+                //this.player.scale.x -= 0.01;
+                //this.player.scale.y -= 0.01;
+            }
+            else if (this.input.keyboard.isDown(Phaser.Keyboard.RIGHT)) {
+                this.player.x +=6,2;
+                //this.player.scale.x += 0.01;
+                // this.player.scale.y += 0.01;
+            }
+            if (this.upKey.isDown)
+            {
             //this.key1 = this.input.keyboard.addKey(Phaser.Keyboard.ONE);
 
             this.player.y -= 6,2;
@@ -100,18 +102,20 @@
         {
             this.player.body.velocity.y = -300;
         }
-    } 
-    this.physics.arcade.overlap(this.caracol, this.player, function (player, caracol){
-       //while(animationStarted){
-        if (this.input.keyboard.isDown(Phaser.Keyboard.LEFT))
+    } */
+    this.physics.arcade.overlap(this.caracol, this.player, function (player, caracol)
     {
-      this.player.body.velocity.x=0;
-        this.player.scale.x -= 0;
-        this.player.scale.y -= 0;
-    }
-//}
-         this.add.bitmapText(200,20, 'minecraftia','RETARD',64);
-    }, null, this);*/
+        while(animationStarted)
+        {
+            if (this.input.keyboard.isDown(Phaser.Keyboard.LEFT))
+            {
+                this.player.body.velocity.x=0;
+                this.player.scale.x -= 0;
+                this.player.scale.y -= 0;
+            }
+        }
+    this.add.bitmapText(200,20, 'minecraftia','RETARD',64);
+    }, null, this);
         
         //this.add.bitmapText(20,20, 'minecraftia','RETARD',64);
 
