@@ -25,7 +25,8 @@
       //player  
             this.player = this.add.sprite(20, 1500, 'personajeEspaldas');
             this.player.animations.add('walkStraight');
-         // this.player.animations.play('walkStraight', 5, true);
+            //this.player.animations.add('walkStraight', [1, 2, 3, 4, 5], 10, false);          // si aqui pongo true en vez de false, lo que pasa es que el player no para de moverse aunque no estemos apretando ninguna tecla
+          //this.player.animations.play('walkStraight', 5, true);
             this.physics.arcade.enable(this.player);
             this.player.body.linearDamping = 1;
             this.player.body.collideWorldBounds = true;
@@ -70,30 +71,33 @@
 
         update: function () {
         
-            if (this.input.keyboard.isDown(Phaser.Keyboard.LEFT)) {
+            if ((this.input.keyboard.isDown(Phaser.Keyboard.LEFT)) === true) {
                 this.player.x -= 6.2;
                 //this.player.scale.x -= 0.01;
                 //this.player.scale.y -= 0.01;
+
             }
-            else if (this.input.keyboard.isDown(Phaser.Keyboard.RIGHT)) {
+            else if ((this.input.keyboard.isDown(Phaser.Keyboard.RIGHT)) === true) {
                 this.player.x +=6,2;
                 //this.player.scale.x += 0.01;
                 // this.player.scale.y += 0.01;
+
             }
-            if (this.upKey.isDown)
+            if ((this.upKey.isDown) === true)
             {
             //this.key1 = this.input.keyboard.addKey(Phaser.Keyboard.ONE);
 
             this.player.y -= 6,2;
             this.player.scale.x -= 0.001;
             this.player.scale.y -= 0.001;
-            this.player.animations.play('walkStraight', 5, true);
+            this.player.animations.play('walkStraight'/*, 5, true*/);
         }
-        else if (this.downKey.isDown)
+        else if ((this.downKey.isDown) === true)
         {
             this.player.y += 6,2;
             this.player.scale.x += 0.001;
             this.player.scale.y += 0.001;
+
         }
         
     /*if (this.jumpButton.isDown && this.game.time.now > this.jumpTimer)
