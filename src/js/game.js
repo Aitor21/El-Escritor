@@ -20,7 +20,7 @@
         this.bitmapText = null;
         this.scaleStop=false;
         this.vScale=0.00081;
-        
+        this.text = null;
     }
 
     Game.prototype = {
@@ -173,7 +173,9 @@
             }
             
             //COMENTARIOS
-            this.add.bitmapText(0,0, 'minecraftia','Jack se levanto esa mañana temprano para ir a caminar',32);
+            
+            //this.add.bitmapText(0,0, 'minecraftia','Jack se levanto esa mañana temprano para ir a caminar',32);
+            this.text = this.add.text(0, 0, 'Jack se levanto esa mañana temprano para ir a caminar',{ font: "20pt Courier", fill: "#000000", stroke: "#119f4e", strokeThickness: 2 });
             
             
             
@@ -195,17 +197,13 @@
             
             this.physics.arcade.overlap(this.niña, this.player,function (niña, player)
             {
-                this.add.bitmapText(0,30, 'minecraftia','Nunca habia visto una chica tan guapa… Se decía a si mismo',32);
-                //this.bitmapText.cameraOffset (299,299);
-                this.add.bitmapText(0,60, 'minecraftia','en su cabeza',32);
-
-                this.add.bitmapText(0,90, 'minecraftia','accion buena',32);
-                this.add.bitmapText(0,120, 'minecraftia','accion mala',32);
-
+                //this.add.bitmapText(0,30, 'minecraftia','Nunca habia visto una chica tan guapa… Se decía a si mismo',32);
+                this.text = this.add.text(0, 30, 'Nunca habia visto una chica tan guapa… Se decía a si mismo',{ font: "20pt Courier", fill: "#000000", stroke: "#119f4e", strokeThickness: 2 });
+                this.text = this.add.text(0, 60, 'en su cabeza',{ font: "20pt Courier", fill: "#000000", stroke: "#119f4e", strokeThickness: 2 });
+                
                 if (this.input.keyboard.isDown(Phaser.Keyboard.B))
                 {
-                    this.add.bitmapText(0,150, 'minecraftia','Se acerco a ella para declararsele abiertamente e invitarle ',32);
-                    this.add.bitmapText(0,180, 'minecraftia','a cenar',32);
+                    this.text = this.add.text(0, 150, 'Se acerco a ella para declararsele abiertamente e invitarle a cenar',{ font: "20pt Courier", fill: "#000000", stroke: "#119f4e", strokeThickness: 2 });
                     /*if(this.create ()){
                         this.player.x=this.lastx;
                         this.player.y=this.lasty;
@@ -213,67 +211,61 @@
                 }
                 else if (this.input.keyboard.isDown(Phaser.Keyboard.M))
                 {
-                    this.add.bitmapText(0,150, 'minecraftia','Tiene que ser mía… -Se repetía, mientras se acercaba a ella',32);
-                    this.add.bitmapText(0,185, 'minecraftia','y la forzaba',32);
+                    this.text = this.add.text(0, 150, 'Tiene que ser mía… -Se repetía, mientras se acercaba a ella y la forzaba',{ font: "20pt Courier", fill: "#000000", stroke: "#119f4e", strokeThickness: 2 });
                 }
 
             },null,this);
             
             this.physics.arcade.overlap(this.mendigo, this.player,function (mendigo, player)
             {
-                this.add.bitmapText(0,30, 'minecraftia','Otro indigente mas en las calles de la ciudad,,',32);
-                this.add.bitmapText(0,60, 'minecraftia','accion buena',32);
-                this.add.bitmapText(0,90, 'minecraftia','accion mala',32);
+                    this.text = this.add.text(0, 30, 'Otro indigente más en las calles de la ciudad',{ font: "20pt Courier", fill: "#000000", stroke: "#119f4e", strokeThickness: 2 });
                 if (this.input.keyboard.isDown(Phaser.Keyboard.B))
                 {
-                    this.add.bitmapText(0,150, 'minecraftia','que menos podia hacer que ayudarle con el dinero que',32);
-                    this.add.bitmapText(0,185, 'minecraftia','llevaba en sus bolsillos',32);
-
-
+                    this.text = this.add.text(0, 60, 'que menos podia hacer que ayudarle con el dinero que',{ font: "20pt Courier", fill: "#000000", stroke: "#119f4e", strokeThickness: 2 });
+                    this.text = this.add.text(0, 90, 'llevaba en sus bolsillos',{ font: "20pt Courier", fill: "#000000", stroke: "#119f4e", strokeThickness: 2 });
                 }
                 else if (this.input.keyboard.isDown(Phaser.Keyboard.M))
                 {
-                    this.add.bitmapText(0,150, 'minecraftia','¿Es que no tenemos ya bastantes vagos como tu? le',32);
-                    this.add.bitmapText(0,185, 'minecraftia','grito al hombre mientras le agredia con una patada',32);
+                    this.text = this.add.text(0, 60, '¿Es que no tenemos ya bastantes vagos como tu? le',{ font: "20pt Courier", fill: "#000000", stroke: "#119f4e", strokeThickness: 2 });
+                    this.text = this.add.text(0, 90, 'grito al hombre mientras le agredia con una patada',{ font: "20pt Courier", fill: "#000000", stroke: "#119f4e", strokeThickness: 2 });
                 }
 
             },null,this);
             
             this.physics.arcade.overlap(this.perro, this.player,function (perro, player)
             {
-                this.add.bitmapText(0,30, 'minecraftia','Ahí estaba el perro que aguardaba tras su edificio todas las mañanas',32);
-                this.add.bitmapText(0,60, 'minecraftia','accion buena',32);
-                this.add.bitmapText(0,90, 'minecraftia','accion mala',32);
+                this.text = this.add.text(0, 30, 'Ahí estaba el perro que aguardaba tras su edificio todas las mañanas',{ font: "20pt Courier", fill: "#000000", stroke: "#119f4e", strokeThickness: 2 });
                 if (this.input.keyboard.isDown(Phaser.Keyboard.B))
                 {
-                    this.add.bitmapText(0,150, 'minecraftia','Jack acariciaba al perro mientras recordaba a su mascota',32);
-                    this.add.bitmapText(0,185, 'minecraftia','de nino Bobby, hacia el que tenia un gran apego',32);
+                    this.text = this.add.text(0, 60, 'Jack acariciaba al perro mientras recordaba a su mascota',{ font: "20pt Courier", fill: "#000000", stroke: "#119f4e", strokeThickness: 2 });
+                    this.text = this.add.text(0, 90, 'de nino Bobby, hacia el que tenia un gran apego',{ font: "20pt Courier", fill: "#000000", stroke: "#119f4e", strokeThickness: 2 });
 
 
                 }
                 else if (this.input.keyboard.isDown(Phaser.Keyboard.M))
                 {
-                    this.add.bitmapText(0,150, 'minecraftia','“¡Largate de una vez, estoy harto de ver tus mierdas',32);
+                    this.text = this.add.text(0, 60, '“¡Largate de una vez, estoy harto de ver tus mierdas',{ font: "20pt Courier", fill: "#000000", stroke: "#119f4e", strokeThickness: 2 });
                     this.add.bitmapText(0,185, 'minecraftia','por aquí! le chillaba al animal mientras le tiraba piedras',32);
+                    this.text = this.add.text(0, 90, 'por aquí! le chillaba al animal mientras le tiraba piedra',{ font: "20pt Courier", fill: "#000000", stroke: "#119f4e", strokeThickness: 2 });
                 }
             },null,this);
             
             this.physics.arcade.overlap(this.vecina1, this.player,function (vecina1, player)
             {
-                this.add.bitmapText(0,30, 'minecraftia','Se topó con su vecina de abajo,',32);
-                this.add.bitmapText(0,60, 'minecraftia','accion buena',32);
-                this.add.bitmapText(0,90, 'minecraftia','accion mala',32);
+                this.text = this.add.text(0, 30, 'Se topó con su vecina de abajo,',{ font: "20pt Courier", fill: "#000000", stroke: "#119f4e", strokeThickness: 2 });
+
                 if (this.input.keyboard.isDown(Phaser.Keyboard.B))
                 {
-                    this.add.bitmapText(0,150, 'minecraftia','era una joven agradable cuya mirada penetraba en el',32);
-                    this.add.bitmapText(0,185, 'minecraftia',' inminentemente',32);
+                    this.text = this.add.text(0, 60, 'era una joven agradable cuya mirada penetraba en el',{ font: "20pt Courier", fill: "#000000", stroke: "#119f4e", strokeThickness: 2 });
+                    this.text = this.add.text(0, 90, 'inminentemente',{ font: "20pt Courier", fill: "#000000", stroke: "#119f4e", strokeThickness: 2 });
 
 
                 }
                 else if (this.input.keyboard.isDown(Phaser.Keyboard.M))
                 {
-                    this.add.bitmapText(0,150, 'minecraftia','a la que mando un corte de mangas para no tener que saludarla',32);
-                    this.add.bitmapText(0,185, 'minecraftia',' puesto que no estaba de humor para nadie',32);
+                    this.text = this.add.text(0, 60, 'a la que mando un corte de mangas para no tener que saludarla',{ font: "20pt Courier", fill: "#000000", stroke: "#119f4e", strokeThickness: 2 });
+                    
+                    this.text = this.add.text(0, 90, 'puesto que no estaba de humor para nadie',{ font: "20pt Courier", fill: "#000000", stroke: "#119f4e", strokeThickness: 2 });
                 }
             },null,this);
 
