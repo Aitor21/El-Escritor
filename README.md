@@ -1,5 +1,7 @@
-Molecule-Game
-=============
+Escribelo
+=========
+This game has been developed by students of the U-tad.
+done by 
+	designers: Sandra, Julia
+	programmers: Aitor, Sergio
 
-Molecule-Game
-Play Molecule-Game: http://molecule.ramonserrano.net16.net/
