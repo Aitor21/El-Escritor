@@ -15,13 +15,19 @@
       this.load.onLoadComplete.addOnce(this.onLoadComplete, this);
       this.load.setPreloadSprite(this.asset);
       this.load.image('fondo', 'assets/1lvl.png');
-    this.load.bitmapFont('minecraftia','assets/minecraftia.png','assets/minecraftia.xml');
-      this.load.image('caracol', 'assets/enemigo.png', 72, 48);
-         this.load.image('colision', 'assets/Colision.png');
-    this.load.spritesheet('mummy', 'assets/metalslug_mummy37x45.png', 37, 45, 18);
-        this.load.spritesheet('personajeEspaldas', 'assets/personaje.png', 561.57, 1761);
+      this.load.bitmapFont('minecraftia','assets/minecraftia.png','assets/minecraftia.xml');
+      this.load.image('bg', 'assets/fondomenu.png');
+      this.load.image('start', 'assets/enter.png');
+      this.load.image('titulo', 'assets/titulo.png');
+      this.load.spritesheet('mummy', 'assets/metalslug_mummy37x45.png', 37, 45, 18);
+      this.load.spritesheet('personajeEspaldas', 'assets/personaje.png', 561.571428571, 1761);
+      this.load.image('perro', 'assets/perro.png');
+      this.load.image('mendigo', 'assets/mendigo.png');
+      this.load.image('niña', 'assets/niña.png');
+      this.load.image('vecina1', 'assets/vecina1.png');
         
-        this.load.physics('physicsData', 'assets/sprites.json');
+        
+        //this.load.physics('physicsData', 'assets/sprites.json');
     },
 
     create: function () {
