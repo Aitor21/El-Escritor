@@ -13,7 +13,13 @@
         this.wall2 = null;
         this.wall3 = null;
         this.wall4 = null;
+        this.wall5 = null;
+        this.wall6 = null;
+        this.wall7 = null;
+        this.wall8 = null;
         this.bitmapText = null;
+        this.scaleStop=false;
+        this.vScale=0.00081;
         
     }
 
@@ -45,6 +51,26 @@
             this.physics.enable(this.wall4, Phaser.Physics.ARCADE);
             this.wall4.body.immovable = true;
             this.wall4.body.setSize(390,180,0,0);
+            
+            this.wall5 = this.add.sprite(385,245,'',0);
+            this.physics.enable(this.wall5, Phaser.Physics.ARCADE);
+            this.wall5.body.immovable = true;
+            this.wall5.body.setSize(100,100,0,0);
+            
+            this.wall6 = this.add.sprite(540,245,'',0);
+            this.physics.enable(this.wall6, Phaser.Physics.ARCADE);
+            this.wall6.body.immovable = true;
+            this.wall6.body.setSize(100,100,0,0);
+            
+            this.wall7 = this.add.sprite(325,280,'',0);
+            this.physics.enable(this.wall7, Phaser.Physics.ARCADE);
+            this.wall7.body.immovable = true;
+            this.wall7.body.setSize(100,100,0,0);
+            
+            this.wall8 = this.add.sprite(568,285,'',0);
+            this.physics.enable(this.wall8, Phaser.Physics.ARCADE);
+            this.wall8.body.immovable = true;
+            this.wall8.body.setSize(100,100,0,0);
             
             this.mendigo = this.add.sprite(770,440, 'mendigo');
             this.physics.enable(this.mendigo, Phaser.Physics.ARCADE);
@@ -94,7 +120,8 @@
 
         update: function () {
         
-            
+            console.log("Escala enX: "+this.player.scale.x+", Escala en Y: "+ this.player.scale.y);
+            console.log("Velocidad de escala: "+this.vScale);
             // MOVIMIENTO DEL PERSONAJE
             // error en la funcion de escalar.  
             //  se altera segun pasa el tiempo :/
@@ -113,28 +140,33 @@
             if (this.input.keyboard.isDown(Phaser.Keyboard.UP))
             {
                 //this.player.y -= 2;
-                if(this.player.position.y >= 345){
+                if(this.player.position.y >= 365){
                     this.player.body.velocity.y = -100;
-                    this.player.scale.y -= 0.00081;
-                    this.player.scale.x -= 0.00081;
+                    if(!this.scaleStop){
+                    this.player.scale.y -= this.vScale;
+                    this.player.scale.x -= this.vScale;
+                    this.player.scale.set(this.player.scale.x,this.player.scale.y);
+                    }
                     this.player.animations.play('forward', 10, true);
                 }
-                if(this.player.position.y <= 345){
+            }
+            
+             else if(this.player.position.y <= 365){
+                 this.player.animations.play('still');
                     this.player.body.velocity.y = 0;
                 }
-            }
                 
-            /*else if (this.input.keyboard.isDown(Phaser.Keyboard.DOWN))
+            else if (this.input.keyboard.isDown(Phaser.Keyboard.DOWN))
             {
                 if(this.player.position.y <=856){    
                     this.player.body.velocity.y = 100;
                     //this.player.body.acceleration.x = 0;
-                    this.player.scale.y += 0.001004;
-                    this.player.scale.x += 0.001004;
+                    this.player.scale.y += this.vScale;
+                    this.player.scale.x += this.vScale;
                     this.player.animations.play('back', 10, true);
                     //this.player.animations.play('walkFlip', 10, true);
                 }
-            }*/
+            }
             else {
             this.player.animations.play('still');
             this.player.body.velocity.y = 0;
@@ -152,10 +184,14 @@
             
             
             
-            this.physics.arcade.collide(this.wall1, this.player,function (wall1, player){},null,this);
-            this.physics.arcade.collide(this.wall2, this.player,function (wall2, player){},null,this);
-            this.physics.arcade.collide(this.wall3, this.player,function (wall3, player){},null,this);
-            this.physics.arcade.collide(this.wall4, this.player,function (wall4, player){},null,this);
+            this.physics.arcade.collide(this.wall1, this.player,function (wall1, player){this.scaleStop=true;},null,this);
+            this.physics.arcade.collide(this.wall2, this.player,function (wall2, player){this.scaleStop=true;},null,this);
+            this.physics.arcade.collide(this.wall3, this.player,function (wall3, player){this.scaleStop=true;},null,this);
+            this.physics.arcade.collide(this.wall4, this.player,function (wall4, player){this.scaleStop=true;},null,this);
+            this.physics.arcade.collide(this.wall5, this.player,function (wall5, player){this.scaleStop=true;},null,this);
+            this.physics.arcade.collide(this.wall6, this.player,function (wall6, player){this.scaleStop=true;},null,this);
+            this.physics.arcade.collide(this.wall7, this.player,function (wall7, player){this.scaleStop=true;},null,this);
+            this.physics.arcade.collide(this.wall8, this.player,function (wall8, player){this.scaleStop=true;},null,this);
             
             this.physics.arcade.overlap(this.niña, this.player,function (niña, player)
             {
@@ -173,7 +209,6 @@
                     if(this.create ()){
                         this.player.x=this.lastx;
                         this.player.y=this.lasty;
-                        this.create ();
                     }
                 }
                 else if (this.input.keyboard.isDown(Phaser.Keyboard.M))
@@ -274,6 +309,10 @@
         this.game.debug.body(this.wall2);
         this.game.debug.body(this.wall3);
         this.game.debug.body(this.wall4);
+        this.game.debug.body(this.wall5);
+        this.game.debug.body(this.wall6);
+        this.game.debug.body(this.wall7);
+        this.game.debug.body(this.wall8);
     },
 
 
