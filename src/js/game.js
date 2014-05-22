@@ -206,10 +206,10 @@
                 {
                     this.add.bitmapText(0,150, 'minecraftia','Se acerco a ella para declararsele abiertamente e invitarle ',32);
                     this.add.bitmapText(0,180, 'minecraftia','a cenar',32);
-                    if(this.create ()){
+                    /*if(this.create ()){
                         this.player.x=this.lastx;
                         this.player.y=this.lasty;
-                    }
+                    }*/
                 }
                 else if (this.input.keyboard.isDown(Phaser.Keyboard.M))
                 {
@@ -294,13 +294,17 @@
                 }
 
             }*/
+            
+            if (this.player.position.y <= 365){
+                this.game.state.start('menu');
+            }
 
     },
         
 
         
     render: function () {
-        this.game.debug.body(this.player);
+        /*this.game.debug.body(this.player);
         this.game.debug.body(this.perro);
         this.game.debug.body(this.mendigo);
         this.game.debug.body(this.vecina1);
@@ -312,7 +316,7 @@
         this.game.debug.body(this.wall5);
         this.game.debug.body(this.wall6);
         this.game.debug.body(this.wall7);
-        this.game.debug.body(this.wall8);
+        this.game.debug.body(this.wall8);*/
     },
 
 
