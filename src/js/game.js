@@ -19,7 +19,7 @@
         this.wall8 = null;
         this.bitmapText = null;
         this.scaleStop = false;
-        this.vScale = 0.00081;
+        //this.vScale = 0.00081;            Que es esto y que hace aqui?? 
         this.text = null;
     }
 
@@ -107,7 +107,7 @@
             this.player.body.collideWorldBounds = true;
             this.player.anchor.setTo(0.5, 0.98);
             this.player.body.setSize(280,320,0,0);
-            this.player.scale.set(0.275, 0.275);
+            //this.player.scale.set(0.275, 0.275);
 
             this.cursors = this.input.keyboard.createCursorKeys();
             this.upKey = this.input.keyboard.addKey(Phaser.Keyboard.UP);                   
@@ -117,14 +117,17 @@
 
             this.input.onDown.addOnce(this.removeText, this);
 
+            //this.time.events.add(Phaser.Timer.SECOND * 4, this.removeText, this);
+
+
 
 
         },
 
         update: function () {
 
-            console.log("Escala enX: "+this.player.scale.x+", Escala en Y: "+ this.player.scale.y);
-            console.log("Velocidad de escala: "+this.vScale);
+            //console.log("Escala enX: "+this.player.scale.x+", Escala en Y: "+ this.player.scale.y);
+            //console.log("Velocidad de escala: "+this.vScale);
             // MOVIMIENTO DEL PERSONAJE
             // error en la funcion de escalar.  
             //  se altera segun pasa el tiempo :/
@@ -198,35 +201,36 @@
             this.physics.arcade.collide(this.wall7, this.player,function (wall7, player){this.scaleStop=true;},null,this);
             this.physics.arcade.collide(this.wall8, this.player,function (wall8, player){this.scaleStop=true;},null,this);
 
+            // colisiones entre la niña y el player
             this.physics.arcade.overlap(this.niña, this.player,function (niña, player)
             {
-                //this.add.bitmapText(0,30, 'minecraftia','Nunca habia visto una chica tan guapa… Se decía a si mismo',32);
+                //this.removeText ();
+                window['el-escritor'].Global.niña=true;
                 this.text = this.add.text(0, 30, 'Nunca habia visto una chica tan guapa… Se decía a si mismo',{ font: "20pt Courier", fill: "#000000", stroke: "#119f4e", strokeThickness: 2 });
                 this.text = this.add.text(0, 60, 'en su cabeza',{ font: "20pt Courier", fill: "#000000", stroke: "#119f4e", strokeThickness: 2 });
 
                 if (this.input.keyboard.isDown(Phaser.Keyboard.B))
                 {
                     this.text = this.add.text(0, 150, 'Se acerco a ella para declararsele abiertamente e invitarle a cenar',{ font: "20pt Courier", fill: "#000000", stroke: "#119f4e", strokeThickness: 2 });
-                    /*if(this.create ()){
-                        this.player.x=this.lastx;
-                        this.player.y=this.lasty;
-                    }*/
+                    //this.removeText();
                 }
                 else if (this.input.keyboard.isDown(Phaser.Keyboard.M))
                 {
                     this.text = this.add.text(0, 150, 'Tiene que ser mía… -Se repetía, mientras se acercaba a ella y la forzaba',{ font: "20pt Courier", fill: "#000000", stroke: "#119f4e", strokeThickness: 2 });
                 }
+                //this.removeText();
 
             },null,this);
-
+            //  colisiones entre mendigo y el player
             this.physics.arcade.overlap(this.mendigo, this.player,function (mendigo, player)
                                         {
+                                            //this.removeText ();
                                             this.text = this.add.text(0, 30, 'Otro indigente más en las calles de la ciudad',{ font: "20pt Courier", fill: "#000000", stroke: "#119f4e", strokeThickness: 2 });
                                             if (this.input.keyboard.isDown(Phaser.Keyboard.B))
                                             {
                                                 this.text = this.add.text(0, 60, 'que menos podia hacer que ayudarle con el dinero que',{ font: "20pt Courier", fill: "#000000", stroke: "#119f4e", strokeThickness: 2 });
                                                 this.text = this.add.text(0, 90, 'llevaba en sus bolsillos',{ font: "20pt Courier", fill: "#000000", stroke: "#119f4e", strokeThickness: 2 });
-                                                this.removeText ();
+                                                //this.removeText ();
                                             }
                                             else if (this.input.keyboard.isDown(Phaser.Keyboard.M))
                                             {
@@ -234,10 +238,12 @@
                                                 this.text = this.add.text(0, 90, 'grito al hombre mientras le agredia con una patada',{ font: "20pt Courier", fill: "#000000", stroke: "#119f4e", strokeThickness: 2 });
                                             }
 
-                                        },null,this);
 
+                                        },null,this);
+            // colisiones entre el perro y el player
             this.physics.arcade.overlap(this.perro, this.player,function (perro, player)
                                         {
+                                            //this.removeText ();
                                             this.text = this.add.text(0, 30, 'Ahí estaba el perro que aguardaba tras su edificio todas las mañanas',{ font: "20pt Courier", fill: "#000000", stroke: "#119f4e", strokeThickness: 2 });
                                             if (this.input.keyboard.isDown(Phaser.Keyboard.B))
                                             {
@@ -252,9 +258,11 @@
                                                 this.text = this.add.text(0, 90, 'por aquí! le chillaba al animal mientras le tiraba piedra',{ font: "20pt Courier", fill: "#000000", stroke: "#119f4e", strokeThickness: 2 });
                                             }
                                         },null,this);
-
+            // colisiones entre la vecina1 y el player 
             this.physics.arcade.overlap(this.vecina1, this.player,function (vecina1, player)
                                         {
+                                            //this.removeText ();
+                                            window['el-escritor'].Global.vecina1=true;
                                             this.text = this.add.text(0, 30, 'Se topó con su vecina de abajo,',{ font: "20pt Courier", fill: "#000000", stroke: "#119f4e", strokeThickness: 2 });
 
                                             if (this.input.keyboard.isDown(Phaser.Keyboard.B))
@@ -271,6 +279,48 @@
                                                 this.text = this.add.text(0, 90, 'puesto que no estaba de humor para nadie',{ font: "20pt Courier", fill: "#000000", stroke: "#119f4e", strokeThickness: 2 });
                                             }
                                         },null,this);
+            
+            //console.log("niña: "+this.niña.x+" "+window['el-escritor'].Global.niña)
+            //console.log("player: "+this.player.x)
+            //console.log("distance: "+this.physics.arcade.distanceBetween(this.player, this.niña))
+            if((this.physics.arcade.distanceBetween(this.player, this.niña)>=400) && window['el-escritor'].Global.niña)
+            {
+                console.log("TAQUITOU");
+                this.removeText(); 
+            }
+            
+            /*if (this.player.position.y <= 565)
+            {
+                this.player.scale.set(0.1,0.1);
+            }*/
+            
+            if (this.player.position.y <= 1000)
+            {
+                this.player.scale.set(0.3);
+            }
+            
+             if (this.player.position.y <= 800)
+            {
+                this.player.scale.set(0.22);
+            }
+            
+            if (this.player.position.y <= 600)
+            {
+                this.player.scale.set(0.1);
+            }
+            
+            if (this.player.position.y <= 400)
+            {
+                this.player.scale.set(0.05);
+            }
+            
+           
+            
+            /*if (this.player.position.y <= 1000)
+            {
+                this.player.scale.set(0.2, 0.2);
+            }*/
+            
 
             //console.log(this.player.position.x);                
             //console.log(this.player.position.y);
@@ -298,8 +348,8 @@
 
 
 
-        render: function () {
-            /*this.game.debug.body(this.player);
+       render: function () {
+            this.game.debug.body(this.player);
         this.game.debug.body(this.perro);
         this.game.debug.body(this.mendigo);
         this.game.debug.body(this.vecina1);
@@ -311,11 +361,12 @@
         this.game.debug.body(this.wall5);
         this.game.debug.body(this.wall6);
         this.game.debug.body(this.wall7);
-        this.game.debug.body(this.wall8);*/
+        this.game.debug.body(this.wall8);
         },
 
         removeText: function ()
         {
+            //this.time.events.add(Phaser.Timer.SECOND * 4, this.removeText, this);
             this.text.destroy();
         },
 
