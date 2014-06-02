@@ -279,7 +279,7 @@
                                                 this.text = this.add.text(0, 90, 'puesto que no estaba de humor para nadie',{ font: "20pt Courier", fill: "#000000", stroke: "#119f4e", strokeThickness: 2 });
                                             }
                                         },null,this);
-            
+
             //console.log("niña: "+this.niña.x+" "+window['el-escritor'].Global.niña)
             //console.log("player: "+this.player.x)
             //console.log("distance: "+this.physics.arcade.distanceBetween(this.player, this.niña))
@@ -288,59 +288,60 @@
                 console.log("TAQUITOU");
                 this.removeText(); 
             }
-            
+
             /*if (this.player.position.y <= 565)
             {
                 this.player.scale.set(0.1,0.1);
             }*/
-            
+
+            //Scales the player
             if (this.player.position.y <= 1000)
             {
                 this.player.scale.set(0.3);
             }
-            
-             if (this.player.position.y <= 900)
+
+            if (this.player.position.y <= 900)
             {
                 this.player.scale.set(0.26);
             }
-            
+
             if (this.player.position.y <= 800)
             {
                 this.player.scale.set(0.22);
             }
-            
+
             if (this.player.position.y <= 700)
             {
                 this.player.scale.set(0.18);
             }
-            
+
             if (this.player.position.y <= 600)
             {
                 this.player.scale.set(0.12);
             }
-            
-             if (this.player.position.y <= 500)
+
+            if (this.player.position.y <= 500)
             {
                 this.player.scale.set(0.07);
             }
-            
+
             if (this.player.position.y <= 400)
             {
                 this.player.scale.set(0.04);
             }
-            
+
             if (this.player.position.y <= 300)
             {
                 this.player.scale.set(0.02);
             }
-            
-           
-            
+
+
+
             /*if (this.player.position.y <= 1000)
             {
                 this.player.scale.set(0.2, 0.2);
             }*/
-            
+
 
             //console.log(this.player.position.x);                
             //console.log(this.player.position.y);
@@ -368,20 +369,20 @@
 
 
 
-       render: function () {
+        render: function () {
             this.game.debug.body(this.player);
-        this.game.debug.body(this.perro);
-        this.game.debug.body(this.mendigo);
-        this.game.debug.body(this.vecina1);
-        this.game.debug.body(this.niña);
-        this.game.debug.body(this.wall1);
-        this.game.debug.body(this.wall2);
-        this.game.debug.body(this.wall3);
-        this.game.debug.body(this.wall4);
-        this.game.debug.body(this.wall5);
-        this.game.debug.body(this.wall6);
-        this.game.debug.body(this.wall7);
-        this.game.debug.body(this.wall8);
+            this.game.debug.body(this.perro);
+            this.game.debug.body(this.mendigo);
+            this.game.debug.body(this.vecina1);
+            this.game.debug.body(this.niña);
+            this.game.debug.body(this.wall1);
+            this.game.debug.body(this.wall2);
+            this.game.debug.body(this.wall3);
+            this.game.debug.body(this.wall4);
+            this.game.debug.body(this.wall5);
+            this.game.debug.body(this.wall6);
+            this.game.debug.body(this.wall7);
+            this.game.debug.body(this.wall8);
         },
 
         removeText: function ()
