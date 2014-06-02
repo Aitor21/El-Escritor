@@ -299,19 +299,39 @@
                 this.player.scale.set(0.3);
             }
             
-             if (this.player.position.y <= 800)
+             if (this.player.position.y <= 900)
+            {
+                this.player.scale.set(0.26);
+            }
+            
+            if (this.player.position.y <= 800)
             {
                 this.player.scale.set(0.22);
             }
             
+            if (this.player.position.y <= 700)
+            {
+                this.player.scale.set(0.18);
+            }
+            
             if (this.player.position.y <= 600)
             {
-                this.player.scale.set(0.1);
+                this.player.scale.set(0.12);
+            }
+            
+             if (this.player.position.y <= 500)
+            {
+                this.player.scale.set(0.07);
             }
             
             if (this.player.position.y <= 400)
             {
-                this.player.scale.set(0.05);
+                this.player.scale.set(0.04);
+            }
+            
+            if (this.player.position.y <= 300)
+            {
+                this.player.scale.set(0.02);
             }
             
            
