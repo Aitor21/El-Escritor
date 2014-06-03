@@ -119,9 +119,6 @@
 
             //this.time.events.add(Phaser.Timer.SECOND * 4, this.removeText, this);
 
-
-
-
         },
 
         update: function () {
@@ -183,15 +180,6 @@
             //this.add.bitmapText(0,0, 'minecraftia','Jack se levanto esa mañana temprano para ir a caminar',32);
             this.text = this.add.text(0, 0, 'Jack se levanto esa mañana temprano para ir a caminar',{ font: "20pt Courier", fill: "#000000", stroke: "#119f4e", strokeThickness: 2 });
 
-
-
-
-
-
-
-
-
-
             this.physics.arcade.collide(this.wall1, this.player,function (wall1, player){this.scaleStop=true;},null,this);
             this.physics.arcade.collide(this.wall2, this.player,function (wall2, player){this.scaleStop=true;},null,this);
             this.physics.arcade.collide(this.wall3, this.player,function (wall3, player){this.scaleStop=true;},null,this);
@@ -211,40 +199,19 @@
             this.physics.arcade.overlap(this.mendigo, this.player,function (mendigo, player)
                                         {
                                             this.textoMendigo ();
-                                            //window['el-escritor'].Global.mendigo=true;
-
-
                                         },null,this);
+
             // colisiones entre el perro y el player
             this.physics.arcade.overlap(this.perro, this.player,function (perro, player)
                                         {
                                             this.textoPerro ();
                                         },null,this);
+
             // colisiones entre la vecina1 y el player 
             this.physics.arcade.overlap(this.vecina1, this.player,function (vecina1, player)
                                         {
                                             this.textoVecina1();
                                         },null,this);
-
-            console.log("nina: "+this.nina.x+" "+window['el-escritor'].Global.nina)
-            console.log("player: "+this.player.x)
-            console.log("distance: "+this.physics.arcade.distanceBetween(this.player, this.nina))
-            if((this.physics.arcade.distanceBetween(this.player, this.nina)>=600) && window['el-escritor'].Global.nina)
-            {
-                console.log("TAQUITOU");
-                this.removeText(); 
-            }
-            if((this.physics.arcade.distanceBetween(this.player, this.mendigo)>=400) && window['el-escritor'].Global.mendigo)
-            {
-                console.log("TAQUITOU");
-                this.removeText(); 
-            }
-            if((this.physics.arcade.distanceBetween(this.player, this.mendigo)>=400) && window['el-escritor'].Global.mendigo)
-            {
-                console.log("TAQUITOU");
-                this.removeText(); 
-            }
-
 
             /*if (this.player.position.y <= 565)
             {
@@ -323,8 +290,6 @@
             }
 
         },
-
-
 
         render: function () {
             this.game.debug.body(this.player);
@@ -422,15 +387,15 @@
 
 
         onInputDown: function () {
-        this.game.state.start('menu');
-    }
+            this.game.state.start('menu');
+        }
 
 
 
 
-};
+    };
 
- window['el-escritor'] = window['el-escritor'] || {};
- window['el-escritor'].Game = Game;
+    window['el-escritor'] = window['el-escritor'] || {};
+    window['el-escritor'].Game = Game;
 
- }());
+}());
