@@ -23,7 +23,7 @@
             this.load.spritesheet('personajeEspaldas', 'assets/personaje.png', 561.571428571, 1761);
             this.load.image('perro', 'assets/perro.png');
             this.load.image('mendigo', 'assets/mendigo.png');
-            this.load.image('niña', 'assets/niña.png');
+            this.load.image('nina', 'assets/niña.png');
             this.load.image('vecina1', 'assets/vecina1.png');
 
 

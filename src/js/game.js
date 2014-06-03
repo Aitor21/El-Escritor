@@ -85,11 +85,11 @@
             this.perro.body.immovable = true;
             this.perro.body.setSize(280, 170, 30, 15);
 
-            this.niña = this.add.sprite(100, 500, 'niña');
-            this.physics.enable(this.niña, Phaser.Physics.ARCADE);
-            this.niña.scale.set(0.5);
-            this.niña.body.immovable = true;
-            this.niña.body.setSize(431, 80, 60, 280);
+            this.nina = this.add.sprite(100, 500, 'nina');
+            this.physics.enable(this.nina, Phaser.Physics.ARCADE);
+            this.nina.scale.set(0.5);
+            this.nina.body.immovable = true;
+            this.nina.body.setSize(431, 80, 60, 280);
 
             this.vecina1 = this.add.sprite(610, 320, 'vecina1');
             this.physics.enable(this.vecina1, Phaser.Physics.ARCADE);
@@ -201,93 +201,50 @@
             this.physics.arcade.collide(this.wall7, this.player,function (wall7, player){this.scaleStop=true;},null,this);
             this.physics.arcade.collide(this.wall8, this.player,function (wall8, player){this.scaleStop=true;},null,this);
 
-            // colisiones entre la niña y el player
-            this.physics.arcade.overlap(this.niña, this.player,function (niña, player)
-            {
-                //this.removeText ();
-                window['el-escritor'].Global.niña=true;
-                this.text = this.add.text(0, 30, 'Nunca habia visto una chica tan guapa… Se decía a si mismo',{ font: "20pt Courier", fill: "#000000", stroke: "#119f4e", strokeThickness: 2 });
-                this.text = this.add.text(0, 60, 'en su cabeza',{ font: "20pt Courier", fill: "#000000", stroke: "#119f4e", strokeThickness: 2 });
+            // colisiones entre la nina y el player
+            this.physics.arcade.overlap(this.nina, this.player,function (nina, player)
+                                        {
+                                            this.textoNina ();
+                                        },null,this);
 
-                if (this.input.keyboard.isDown(Phaser.Keyboard.B))
-                {
-                    this.text = this.add.text(0, 150, 'Se acerco a ella para declararsele abiertamente e invitarle a cenar',{ font: "20pt Courier", fill: "#000000", stroke: "#119f4e", strokeThickness: 2 });
-                    //this.removeText();
-                }
-                else if (this.input.keyboard.isDown(Phaser.Keyboard.M))
-                {
-                    this.text = this.add.text(0, 150, 'Tiene que ser mía… -Se repetía, mientras se acercaba a ella y la forzaba',{ font: "20pt Courier", fill: "#000000", stroke: "#119f4e", strokeThickness: 2 });
-                }
-                //this.removeText();
-
-            },null,this);
             //  colisiones entre mendigo y el player
             this.physics.arcade.overlap(this.mendigo, this.player,function (mendigo, player)
                                         {
-                                            //this.removeText ();
-                                            this.text = this.add.text(0, 30, 'Otro indigente más en las calles de la ciudad',{ font: "20pt Courier", fill: "#000000", stroke: "#119f4e", strokeThickness: 2 });
-                                            if (this.input.keyboard.isDown(Phaser.Keyboard.B))
-                                            {
-                                                this.text = this.add.text(0, 60, 'que menos podia hacer que ayudarle con el dinero que',{ font: "20pt Courier", fill: "#000000", stroke: "#119f4e", strokeThickness: 2 });
-                                                this.text = this.add.text(0, 90, 'llevaba en sus bolsillos',{ font: "20pt Courier", fill: "#000000", stroke: "#119f4e", strokeThickness: 2 });
-                                                //this.removeText ();
-                                            }
-                                            else if (this.input.keyboard.isDown(Phaser.Keyboard.M))
-                                            {
-                                                this.text = this.add.text(0, 60, '¿Es que no tenemos ya bastantes vagos como tu? le',{ font: "20pt Courier", fill: "#000000", stroke: "#119f4e", strokeThickness: 2 });
-                                                this.text = this.add.text(0, 90, 'grito al hombre mientras le agredia con una patada',{ font: "20pt Courier", fill: "#000000", stroke: "#119f4e", strokeThickness: 2 });
-                                            }
+                                            this.textoMendigo ();
+                                            //window['el-escritor'].Global.mendigo=true;
 
 
                                         },null,this);
             // colisiones entre el perro y el player
             this.physics.arcade.overlap(this.perro, this.player,function (perro, player)
                                         {
-                                            //this.removeText ();
-                                            this.text = this.add.text(0, 30, 'Ahí estaba el perro que aguardaba tras su edificio todas las mañanas',{ font: "20pt Courier", fill: "#000000", stroke: "#119f4e", strokeThickness: 2 });
-                                            if (this.input.keyboard.isDown(Phaser.Keyboard.B))
-                                            {
-                                                this.text = this.add.text(0, 60, 'Jack acariciaba al perro mientras recordaba a su mascota',{ font: "20pt Courier", fill: "#000000", stroke: "#119f4e", strokeThickness: 2 });
-                                                this.text = this.add.text(0, 90, 'de nino Bobby, hacia el que tenia un gran apego',{ font: "20pt Courier", fill: "#000000", stroke: "#119f4e", strokeThickness: 2 });
-
-
-                                            }
-                                            else if (this.input.keyboard.isDown(Phaser.Keyboard.M))
-                                            {
-                                                this.text = this.add.text(0, 60, '“¡Largate de una vez, estoy harto de ver tus mierdas',{ font: "20pt Courier", fill: "#000000", stroke: "#119f4e", strokeThickness: 2 });
-                                                this.text = this.add.text(0, 90, 'por aquí! le chillaba al animal mientras le tiraba piedra',{ font: "20pt Courier", fill: "#000000", stroke: "#119f4e", strokeThickness: 2 });
-                                            }
+                                            this.textoPerro ();
                                         },null,this);
             // colisiones entre la vecina1 y el player 
             this.physics.arcade.overlap(this.vecina1, this.player,function (vecina1, player)
                                         {
-                                            //this.removeText ();
-                                            window['el-escritor'].Global.vecina1=true;
-                                            this.text = this.add.text(0, 30, 'Se topó con su vecina de abajo,',{ font: "20pt Courier", fill: "#000000", stroke: "#119f4e", strokeThickness: 2 });
-
-                                            if (this.input.keyboard.isDown(Phaser.Keyboard.B))
-                                            {
-                                                this.text = this.add.text(0, 60, 'era una joven agradable cuya mirada penetraba en el',{ font: "20pt Courier", fill: "#000000", stroke: "#119f4e", strokeThickness: 2 });
-                                                this.text = this.add.text(0, 90, 'inminentemente',{ font: "20pt Courier", fill: "#000000", stroke: "#119f4e", strokeThickness: 2 });
-
-
-                                            }
-                                            else if (this.input.keyboard.isDown(Phaser.Keyboard.M))
-                                            {
-                                                this.text = this.add.text(0, 60, 'a la que mando un corte de mangas para no tener que saludarla',{ font: "20pt Courier", fill: "#000000", stroke: "#119f4e", strokeThickness: 2 });
-
-                                                this.text = this.add.text(0, 90, 'puesto que no estaba de humor para nadie',{ font: "20pt Courier", fill: "#000000", stroke: "#119f4e", strokeThickness: 2 });
-                                            }
+                                            this.textoVecina1();
                                         },null,this);
 
-            //console.log("niña: "+this.niña.x+" "+window['el-escritor'].Global.niña)
-            //console.log("player: "+this.player.x)
-            //console.log("distance: "+this.physics.arcade.distanceBetween(this.player, this.niña))
-            if((this.physics.arcade.distanceBetween(this.player, this.niña)>=400) && window['el-escritor'].Global.niña)
+            console.log("nina: "+this.nina.x+" "+window['el-escritor'].Global.nina)
+            console.log("player: "+this.player.x)
+            console.log("distance: "+this.physics.arcade.distanceBetween(this.player, this.nina))
+            if((this.physics.arcade.distanceBetween(this.player, this.nina)>=600) && window['el-escritor'].Global.nina)
             {
                 console.log("TAQUITOU");
                 this.removeText(); 
             }
+            if((this.physics.arcade.distanceBetween(this.player, this.mendigo)>=400) && window['el-escritor'].Global.mendigo)
+            {
+                console.log("TAQUITOU");
+                this.removeText(); 
+            }
+            if((this.physics.arcade.distanceBetween(this.player, this.mendigo)>=400) && window['el-escritor'].Global.mendigo)
+            {
+                console.log("TAQUITOU");
+                this.removeText(); 
+            }
+
 
             /*if (this.player.position.y <= 565)
             {
@@ -374,7 +331,7 @@
             this.game.debug.body(this.perro);
             this.game.debug.body(this.mendigo);
             this.game.debug.body(this.vecina1);
-            this.game.debug.body(this.niña);
+            this.game.debug.body(this.nina);
             this.game.debug.body(this.wall1);
             this.game.debug.body(this.wall2);
             this.game.debug.body(this.wall3);
@@ -391,15 +348,89 @@
             this.text.destroy();
         },
 
+        textoNina: function ()
+        {
+            //this.removeText ();
+            //window['el-escritor'].Global.nina=true;
+            this.text = this.add.text(0, 30, 'Nunca habia visto una chica tan guapa… Se decía a si mismo en su cabeza',{ font: "20pt Courier", fill: "#000000", stroke: "#119f4e", strokeThickness: 2 });
+
+            if (this.input.keyboard.isDown(Phaser.Keyboard.B))
+            {
+                this.text = this.add.text(0, 150, 'Se acerco a ella para declararsele abiertamente e invitarle a cenar',{ font: "20pt Courier", fill: "#000000", stroke: "#119f4e", strokeThickness: 2 });
+                //this.removeText();
+            }
+            else if (this.input.keyboard.isDown(Phaser.Keyboard.M))
+            {
+                this.text = this.add.text(0, 150, 'Tiene que ser mía… -Se repetía, mientras se acercaba a ella y la forzaba',{ font: "20pt Courier", fill: "#000000", stroke: "#119f4e", strokeThickness: 2 });
+            }
+        },
+        textoMendigo: function ()
+        {
+            //this.removeText ();
+            this.text = this.add.text(0, 30, 'Otro indigente más en las calles de la ciudad',{ font: "20pt Courier", fill: "#000000", stroke: "#119f4e", strokeThickness: 2 });
+            if (this.input.keyboard.isDown(Phaser.Keyboard.B))
+            {
+                this.text = this.add.text(0, 60, 'que menos podia hacer que ayudarle con el dinero que',{ font: "20pt Courier", fill: "#000000", stroke: "#119f4e", strokeThickness: 2 });
+                this.text = this.add.text(0, 90, 'llevaba en sus bolsillos',{ font: "20pt Courier", fill: "#000000", stroke: "#119f4e", strokeThickness: 2 });
+                //this.removeText ();
+            }
+            else if (this.input.keyboard.isDown(Phaser.Keyboard.M))
+            {
+                this.text = this.add.text(0, 60, '¿Es que no tenemos ya bastantes vagos como tu? le',{ font: "20pt Courier", fill: "#000000", stroke: "#119f4e", strokeThickness: 2 });
+                this.text = this.add.text(0, 90, 'grito al hombre mientras le agredia con una patada',{ font: "20pt Courier", fill: "#000000", stroke: "#119f4e", strokeThickness: 2 });
+            }
+        },
+        textoPerro: function ()
+        {
+            //this.removeText ();
+            //window['el-escritor'].Global.perro=true;
+            this.text = this.add.text(0, 30, 'Ahí estaba el perro que aguardaba tras su edificio todas las mañanas',{ font: "20pt Courier", fill: "#000000", stroke: "#119f4e", strokeThickness: 2 });
+            if (this.input.keyboard.isDown(Phaser.Keyboard.B))
+            {
+                this.text = this.add.text(0, 60, 'Jack acariciaba al perro mientras recordaba a su mascota',{ font: "20pt Courier", fill: "#000000", stroke: "#119f4e", strokeThickness: 2 });
+                this.text = this.add.text(0, 90, 'de nino Bobby, hacia el que tenia un gran apego',{ font: "20pt Courier", fill: "#000000", stroke: "#119f4e", strokeThickness: 2 });
+
+
+            }
+            else if (this.input.keyboard.isDown(Phaser.Keyboard.M))
+            {
+                this.text = this.add.text(0, 60, '“¡Largate de una vez, estoy harto de ver tus mierdas',{ font: "20pt Courier", fill: "#000000", stroke: "#119f4e", strokeThickness: 2 });
+                this.text = this.add.text(0, 90, 'por aquí! le chillaba al animal mientras le tiraba piedra',{ font: "20pt Courier", fill: "#000000", stroke: "#119f4e", strokeThickness: 2 });
+            }
+
+        },
+        textoVecina1: function ()
+        {
+            //this.removeText ();
+            //window['el-escritor'].Global.vecina1=true;
+            this.text = this.add.text(0, 30, 'Se topó con su vecina de abajo,',{ font: "20pt Courier", fill: "#000000", stroke: "#119f4e", strokeThickness: 2 });
+
+            if (this.input.keyboard.isDown(Phaser.Keyboard.B))
+            {
+                this.text = this.add.text(0, 60, 'era una joven agradable cuya mirada penetraba en el',{ font: "20pt Courier", fill: "#000000", stroke: "#119f4e", strokeThickness: 2 });
+                this.text = this.add.text(0, 90, 'inminentemente',{ font: "20pt Courier", fill: "#000000", stroke: "#119f4e", strokeThickness: 2 });
+
+
+            }
+            else if (this.input.keyboard.isDown(Phaser.Keyboard.M))
+            {
+                this.text = this.add.text(0, 60, 'a la que mando un corte de mangas para no tener que saludarla',{ font: "20pt Courier", fill: "#000000", stroke: "#119f4e", strokeThickness: 2 });
+
+                this.text = this.add.text(0, 90, 'puesto que no estaba de humor para nadie',{ font: "20pt Courier", fill: "#000000", stroke: "#119f4e", strokeThickness: 2 });
+            }
+        },
+
 
         onInputDown: function () {
-            this.game.state.start('menu');
-        }
+        this.game.state.start('menu');
+    }
 
 
-    };
 
-    window['el-escritor'] = window['el-escritor'] || {};
-    window['el-escritor'].Game = Game;
 
-}());
+};
+
+ window['el-escritor'] = window['el-escritor'] || {};
+ window['el-escritor'].Game = Game;
+
+ }());
