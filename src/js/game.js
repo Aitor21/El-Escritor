@@ -17,8 +17,14 @@
         this.wall6 = null;
         this.wall7 = null;
         this.wall8 = null;
+        this.wall9 = null;
+        this.wall10 = null;
+        this.wall11 = null;
+        this.fondoTexto = null;
         this.bitmapText = null;
         this.scaleStop = false;
+        //this.scale = 860;
+        //this.escala = 0.3;
         //this.vScale = 0.00081;            Que es esto y que hace aqui?? 
         //this.text = null;
         //this.textoNina = null;
@@ -74,6 +80,21 @@
             this.wall8.body.immovable = true;
             this.wall8.body.setSize(100, 100, 0, 0);
 
+            this.wall9 = this.add.sprite(860, 800, '', 0);
+            this.physics.enable(this.wall9, Phaser.Physics.ARCADE);
+            this.wall9.body.immovable = true;
+            this.wall9.body.setSize(500, 100, 0, 0);
+
+            this.wall10 = this.add.sprite(920, 730, '', 0);
+            this.physics.enable(this.wall10, Phaser.Physics.ARCADE);
+            this.wall10.body.immovable = true;
+            this.wall10.body.setSize(500, 100, 0, 0);
+
+            this.wall11 = this.add.sprite(1070, 530, '', 0);
+            this.physics.enable(this.wall11, Phaser.Physics.ARCADE);
+            this.wall11.body.immovable = true;
+            this.wall11.body.setSize(500, 300, 0, 0);
+
             this.mendigo = this.add.sprite(770, 440, 'mendigo');
             this.physics.enable(this.mendigo, Phaser.Physics.ARCADE);
             this.mendigo.scale.set(0.294);
@@ -98,6 +119,9 @@
             this.vecina1.body.immovable = true;
             this.vecina1.body.setSize(290, 530, -5, 15);
 
+            this.fondoTexto = this.add.sprite(12,0, 'fondoTexto', 0);
+            this.fondoTexto.immovable = true;
+
             //player  
 
             this.player = this.add.sprite(550, 858, 'personajeEspaldas');
@@ -108,7 +132,7 @@
             this.player.body.collideWorldBounds = true;
             this.player.anchor.setTo(0.5, 0.98);
             this.player.body.setSize(280,320,0,0);
-            //this.player.scale.set(0.275, 0.275);
+            this.player.scale.set(0.275, 0.275);
 
             this.cursors = this.input.keyboard.createCursorKeys();
             this.upKey = this.input.keyboard.addKey(Phaser.Keyboard.UP);                   
@@ -121,11 +145,11 @@
             //this.time.events.add(Phaser.Timer.SECOND * 4, this.removeText, this);
 
             this.input.onDown.addOnce(this.removeText, this);
-            this.text = this.add.text(0, 0, 'Jack se levanto esa mañana temprano para ir a caminar',{ font: "20pt Courier", fill: "#000000", stroke: "#119f4e", strokeThickness: 2 });
-            this.textodelanina = this.add.text(0, 30, '',{ font: "20pt Courier", fill: "#000000", stroke: "#119f4e", strokeThickness: 2 });
-            this.textodelmendigo = this.add.text(0, 30, '',{ font: "20pt Courier", fill: "#000000", stroke: "#119f4e", strokeThickness: 2 });
-            this.textodelperro = this.add.text(0, 30, '',{ font: "20pt Courier", fill: "#000000", stroke: "#119f4e", strokeThickness: 2 });
-            this.textodelavecina1 = this.add.text(0, 30, '',{ font: "20pt Courier", fill: "#000000", stroke: "#119f4e", strokeThickness: 2 });
+            this.text = this.add.text(25, 18, 'Jack se levanto esa mañana temprano para ir a caminar',{ font: "20pt Old English MT", fill: "#000000", stroke: "#000066", strokeThickness: 2 });
+            this.textodelanina = this.add.text(25, 60, '',{ font: "20pt Old English MT", fill: "#000000", stroke: "#000066", strokeThickness: 2 });
+            this.textodelmendigo = this.add.text(25, 60, '',{ font: "20pt Old English MT", fill: "#000000", stroke: "#000066", strokeThickness: 2 });
+            this.textodelperro = this.add.text(25, 60, '',{ font: "20pt Old English MT", fill: "#000000", stroke: "#000066", strokeThickness: 2 });
+            this.textodelavecina1 = this.add.text(25, 60, '',{ font: "20pt Old English MT", fill: "#000000", stroke: "#000066", strokeThickness: 2 });
 
         },
 
@@ -160,6 +184,17 @@
                     }
                     this.player.animations.play('forward', 10, true);
                 }
+
+                //este bucle sustituye todos los ifs de abajo,
+                //                if (this.player.position.y >= 300)
+                //                {
+                //                    if (this.player.position.y <= this.scale)
+                //                    {
+                //                        this.player.scale.set(this.escala);
+                //                    }
+                //                    this.scale --;
+                //                    this.escala --;
+                //                }
             }
 
             else if(this.player.position.y <= 365){
@@ -197,6 +232,9 @@
             this.physics.arcade.collide(this.wall6, this.player,function (wall6, player){this.scaleStop=true;},null,this);
             this.physics.arcade.collide(this.wall7, this.player,function (wall7, player){this.scaleStop=true;},null,this);
             this.physics.arcade.collide(this.wall8, this.player,function (wall8, player){this.scaleStop=true;},null,this);
+            this.physics.arcade.collide(this.wall9, this.player,function (wall9, player){this.scaleStop=true;},null,this);
+            this.physics.arcade.collide(this.wall10, this.player,function (wall10, player){this.scaleStop=true;},null,this);
+            this.physics.arcade.collide(this.wall11, this.player,function (wall11, player){this.scaleStop=true;},null,this);
 
             // colisiones entre la nina y el player
             this.physics.arcade.overlap(this.nina, this.player,function (nina, player)
@@ -233,47 +271,17 @@
             {
                 this.player.scale.set(0.1,0.1);
             }*/
-
             //Scales the player
-            if (this.player.position.y <= 1000)
-            {
-                this.player.scale.set(0.3);
-            }
-
-            if (this.player.position.y <= 900)
-            {
-                this.player.scale.set(0.26);
-            }
-
-            if (this.player.position.y <= 800)
-            {
-                this.player.scale.set(0.22);
-            }
-
-            if (this.player.position.y <= 700)
-            {
-                this.player.scale.set(0.18);
-            }
-
-            if (this.player.position.y <= 600)
-            {
-                this.player.scale.set(0.12);
-            }
-
-            if (this.player.position.y <= 500)
-            {
-                this.player.scale.set(0.07);
-            }
-
-            if (this.player.position.y <= 400)
-            {
-                this.player.scale.set(0.04);
-            }
-
-            if (this.player.position.y <= 300)
-            {
-                this.player.scale.set(0.02);
-            }
+            //            while (this.player.position.y >= 300)
+            //            {
+            //                if (this.player.position.y <= this.scale)
+            //                {
+            //                    this.player.scale.set(this.escala);
+            //                }
+            //                this.scale --;
+            //                this.escala --;
+            //            }
+            this.escalar ();
 
             //console.log(this.player.position.x);                
             //console.log(this.player.position.y);
@@ -317,6 +325,12 @@
             this.game.debug.body(this.wall6);
             this.game.debug.body(this.wall7);
             this.game.debug.body(this.wall8);
+            this.game.debug.body(this.wall9);
+            this.game.debug.body(this.wall10);
+            this.game.debug.body(this.wall11);
+            this.game.debug.body(this.fondoTexto);
+
+
         },
 
         removeText: function ()
@@ -332,22 +346,22 @@
 
             this.textodelavecina1.setText(" ");
 
-//            if((this.physics.arcade.distanceBetween(this.player, this.nina)>=40) && window['el-escritor'].Global.nina)
-//            {
-//                this.textodelanina.setText(" ");
-//            }
-//            else if ((this.physics.arcade.distanceBetween(this.player, this.mendigo)>=40) && window['el-escritor'].Global.mendigo)
-//            {
-//                this.textodelmendigo.setText(" ");
-//            }
-//            else if((this.physics.arcade.distanceBetween(this.player, this.perro)>=40) && window['el-escritor'].Global.perro)
-//            {
-//                this.textodelperro.setText(" ");
-//            }
-//            else if ((this.physics.arcade.distanceBetween(this.player, this.vecina1)>=40) && window['el-escritor'].Global.vecina1)
-//            {
-//                this.textodelavecina1.setText(" ");
-//            }
+            //            if((this.physics.arcade.distanceBetween(this.player, this.nina)>=40) && window['el-escritor'].Global.nina)
+            //            {
+            //                this.textodelanina.setText(" ");
+            //            }
+            //            else if ((this.physics.arcade.distanceBetween(this.player, this.mendigo)>=40) && window['el-escritor'].Global.mendigo)
+            //            {
+            //                this.textodelmendigo.setText(" ");
+            //            }
+            //            else if((this.physics.arcade.distanceBetween(this.player, this.perro)>=40) && window['el-escritor'].Global.perro)
+            //            {
+            //                this.textodelperro.setText(" ");
+            //            }
+            //            else if ((this.physics.arcade.distanceBetween(this.player, this.vecina1)>=40) && window['el-escritor'].Global.vecina1)
+            //            {
+            //                this.textodelavecina1.setText(" ");
+            //            }
 
         },
 
@@ -384,7 +398,7 @@
             }
             else if (this.input.keyboard.isDown(Phaser.Keyboard.M))
             {
-                this.textodelmendigo.setText("¿Es que no tenemos ya bastantes vagos como tu? le grito al hombre mientras le agredia con una patada");
+                this.textodelmendigo.setText("¿Es que no tenemos ya bastantes vagos como tu? le grito al hombre");
             }
             //this.removeText ();
 
@@ -396,11 +410,11 @@
             this.textodelperro.setText("Ahí estaba el perro que aguardaba tras su edificio todas las mañanas");
             if (this.input.keyboard.isDown(Phaser.Keyboard.B))
             {
-                this.textodelperro.setText("Jack acariciaba al perro mientras recordaba a su mascota de nino Bobby, hacia el que tenia un gran apego");
+                this.textodelperro.setText("Jack acariciaba al perro mientras recordaba a su mascota de nino Bobby");
             }
             else if (this.input.keyboard.isDown(Phaser.Keyboard.M))
             {
-                this.textodelperro.setText("“¡Largate de una vez, estoy harto de ver tus mierdas por aquí! le chillaba al animal mientras le tiraba piedra");
+                this.textodelperro.setText("“¡Largate de una vez, estoy harto de ver tus mierdas por aquí!");
             }
             //this.removeText ();
 
@@ -420,6 +434,94 @@
                 this.textodelperro.setText("a la que mando un corte de mangas para no tener que saludarla puesto que no estaba de humor para nadie");
             }
             //this.removeText ();
+
+        },
+        escalar: function()
+        {
+            if (this.player.position.y <= 850)
+            {
+                this.player.scale.set(0.3);
+            }
+            if (this.player.position.y <= 825)
+            {
+                this.player.scale.set(0.285);
+            }
+            if (this.player.position.y <= 800)
+            {
+                this.player.scale.set(0.27);
+            }
+            if (this.player.position.y <= 775)
+            {
+                this.player.scale.set(0.255);
+            }
+            if (this.player.position.y <= 750)
+            {
+                this.player.scale.set(0.24);
+            }
+            if (this.player.position.y <= 725)
+            {
+                this.player.scale.set(0.225);
+            }
+            if (this.player.position.y <= 700)
+            {
+                this.player.scale.set(0.21);
+            }
+            if (this.player.position.y <= 675)
+            {
+                this.player.scale.set(0.195);
+            }
+            if (this.player.position.y <= 650)
+            {
+                this.player.scale.set(0.18);
+            }
+            if (this.player.position.y <= 625)
+            {
+                this.player.scale.set(0.165);
+            }
+            if (this.player.position.y <= 600)
+            {
+                this.player.scale.set(0.15);
+            }
+            if (this.player.position.y <= 575)
+            {
+                this.player.scale.set(0.135);
+            }
+            if (this.player.position.y <= 550)
+            {
+                this.player.scale.set(0.12);
+            }
+            if (this.player.position.y <= 525)
+            {
+                this.player.scale.set(0.1);
+            }
+            if (this.player.position.y <= 500)
+            {
+                this.player.scale.set(0.09);
+            }
+            if (this.player.position.y <= 475)
+            {
+                this.player.scale.set(0.08);
+            }
+            if (this.player.position.y <= 450)
+            {
+                this.player.scale.set(0.070);
+            }
+            if (this.player.position.y <= 425)
+            {
+                this.player.scale.set(0.065);
+            }
+            if (this.player.position.y <= 400)
+            {
+                this.player.scale.set(0.06);
+            }
+            if (this.player.position.y <= 375)
+            {
+                this.player.scale.set(0.050);
+            }
+            if (this.player.position.y <= 350)
+            {
+                this.player.scale.set(0.01);
+            }
 
         },
 

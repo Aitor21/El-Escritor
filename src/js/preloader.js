@@ -25,6 +25,7 @@
             this.load.image('mendigo', 'assets/mendigo.png');
             this.load.image('nina', 'assets/niña.png');
             this.load.image('vecina1', 'assets/vecina1.png');
+            this.load.image('fondoTexto', 'assets/Board.png');
 
 
             //this.load.physics('physicsData', 'assets/sprites.json');
