@@ -48,4 +48,5 @@
     window['el-escritor'] = window['el-escritor'] || {};
     window['el-escritor'].Preloader = Preloader;
 
+
 }());

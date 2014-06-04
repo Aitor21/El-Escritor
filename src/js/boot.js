@@ -31,7 +31,7 @@
 
   window['el-escritor'] = window['el-escritor'] || {};
   window['el-escritor'].Boot = Boot;
-  window['el-escritor'].Global = { vecina: false, mendigo: false, perro: false, niña: false};
+  window['el-escritor'].Global = { vecina: false, mendigo: false, perro: false, nina: false};
     
 
 }());
