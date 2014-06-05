@@ -266,7 +266,7 @@
              this.escalar ();
 
              if (this.player.position.y <= 365){
-                 this.game.state.start('menu');
+                 this.game.state.start('credit');
              }
          },
 
@@ -431,23 +431,23 @@
              {
                  this.player.scale.set(0.065);
              }
+             if (this.player.position.y <= 405)
+             {
+                 this.player.scale.set(0.060);
+             }
              if (this.player.position.y <= 400)
              {
-                 this.player.scale.set(0.06);
+                 this.player.scale.set(0.045);
              }
-             if (this.player.position.y <= 375)
+             if (this.player.position.y <= 370)
              {
-                 this.player.scale.set(0.050);
-             }
-             if (this.player.position.y <= 350)
-             {
-                 this.player.scale.set(0.01);
+                 this.player.scale.set(0.035);
              }
 
          },
 
          onInputDown: function () {
-             this.game.state.start('menu');
+             this.game.state.start('credit');
          }
 
      };

@@ -19,8 +19,10 @@
         this.add.sprite(195,20, 'titulo');
         this.startTxt = this.add.sprite(385,380, 'start',function(){this.game.state.start('game');});
         this.startTxt.scale.set(0.55);
-            
-            this.text = this.add.text(20, 820, 'Diseño: JS Programacción: AS',{ font: "20pt Courier", fill: "#000000", stroke: "#119f4e", strokeThickness: 2 });
+        
+            this.text = this.add.text(20, 760, 'Movimiento mediante flechas direccionales',{ font: "20pt Old English MT", fill: "#000000", stroke: "#000066", strokeThickness: 2 });    
+            this.text = this.add.text(20, 790, 'Pulsar B para hacer el Bien',{ font: "20pt Old English MT", fill: "#000000", stroke: "#000066", strokeThickness: 2 });
+            this.text = this.add.text(20, 820, 'Pulsar M para hacer el Mal',{ font: "20pt Old English MT", fill: "#000000", stroke: "#000066", strokeThickness: 2 });
 
 
       this.input.onDown.add(this.onDown, this);
