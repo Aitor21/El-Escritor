@@ -270,25 +270,25 @@
              }
          },
 
-         render: function () {
-             this.game.debug.body(this.player);
-             this.game.debug.body(this.perro);
-             this.game.debug.body(this.mendigo);
-             this.game.debug.body(this.vecina1);
-             this.game.debug.body(this.nina);
-             this.game.debug.body(this.wall1);
-             this.game.debug.body(this.wall2);
-             this.game.debug.body(this.wall3);
-             this.game.debug.body(this.wall4);
-             this.game.debug.body(this.wall5);
-             this.game.debug.body(this.wall6);
-             this.game.debug.body(this.wall7);
-             this.game.debug.body(this.wall8);
-             this.game.debug.body(this.wall9);
-             this.game.debug.body(this.wall10);
-             this.game.debug.body(this.wall11);
-             this.game.debug.body(this.fondoTexto);
-         },
+//         render: function () {
+//             this.game.debug.body(this.player);
+//             this.game.debug.body(this.perro);
+//             this.game.debug.body(this.mendigo);
+//             this.game.debug.body(this.vecina1);
+//             this.game.debug.body(this.nina);
+//             this.game.debug.body(this.wall1);
+//             this.game.debug.body(this.wall2);
+//             this.game.debug.body(this.wall3);
+//             this.game.debug.body(this.wall4);
+//             this.game.debug.body(this.wall5);
+//             this.game.debug.body(this.wall6);
+//             this.game.debug.body(this.wall7);
+//             this.game.debug.body(this.wall8);
+//             this.game.debug.body(this.wall9);
+//             this.game.debug.body(this.wall10);
+//             this.game.debug.body(this.wall11);
+//             this.game.debug.body(this.fondoTexto);
+//         },
 
          removeText: function ()
          {
@@ -359,7 +359,7 @@
          },
          escalar: function()
          {
-             if (this.player.position.y <= 850)
+             if (this.player.position.y <= 860)
              {
                  this.player.scale.set(0.3);
              }
